@@ -1,11 +1,9 @@
 <?php 
 	
   // Si le tableau $_POST existe alors le formulaire a été envoyé
-  if(!empty($_POST))
-  {  
+  if(!empty($_POST))  {  
 	     	
 	    $commande = $_POST['com'];
-	    			
 		
 		$monfichier2 = fopen('/var/www/html/LiveStream/servo.txt', 'r+');
 		$ser= fgets($monfichier2); // On lit la première ligne 
@@ -48,16 +46,19 @@
 			fseek($monfichier2, 0); // On remet le curseur au début du fichier
 			fputs($monfichier2, $reponse); // On écrit le nouveau nombre 	
 			sleep(1);	
-		}				
-		
+		}			
+	
 }
 
 ?>
 
+<br/>
 
-<table id="table">   
-   
-   <br/>   
+<h3>Panneau de commande</h3>
+
+<br/>
+
+<table id="table">    
 
    <tr>
        <td></td>
@@ -82,7 +83,7 @@
        <td>
 		   	<p><form class="form" method="post" action="servo.php"> 		
 			<input type="hidden" name="com" value="5"><br>
-			<input type="image" src="img/fleche-centre.png" alt="Submit" >
+			<input type="image" src="img/home.png" alt="Submit" >
 			</form></p>
 		</td>
 		<td></td>
@@ -105,11 +106,8 @@
        </td>
        <td></td>
        <td></td>
-   </tr>
+   </tr> 
 
 
-   
 </table>
-
-
-
+   

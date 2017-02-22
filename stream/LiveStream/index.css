@@ -14,9 +14,9 @@ footer {
 	border-radius: 1em
 }
 	
-#cam {
+.cam {
 	width:100%;
-	height: 40em;
+	height:650px;
 	margin-top: 1em;	
 	border:none;
 	}
@@ -25,6 +25,7 @@ footer {
     margin: auto;
     text-align: center;   
 }
+
 
 #date {
     margin:  auto;
@@ -39,16 +40,18 @@ footer {
 }
 
 
-#form {	
+.form {	
 	font-style: italic;	
 	font-weight: bold;	
+	text-align:center;
 	}
+	
 
 
 input#stop { 
 	background: #EF9090;
 	width:6em;
-	padding: 10px 20px; 
+	padding: 10px 10px; 
 	font-style: italic;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -60,7 +63,7 @@ input#stop {
 input#play { 
 	background: #EEEE98;
 	width:6em;
-	padding: 10px 20px; 
+	padding: 10px 10px; 
 	font-style: italic;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -83,7 +86,7 @@ main {
 	background-color: black ;
 	flex: 1; /* Force l'étirement */		
 	order: 2 ;/* position */
-	width:80%;
+	width:65%;
 	padding: 1em;
 	margin: 0.em;
 	border-radius: 1em
@@ -99,11 +102,22 @@ nav {
 	margin: 0.em;
 	border-radius: 1em
 }
+
+aside {	
+	display: flex;
+	flex-direction: column;
+	background-color: #E3ED9B;
+	order: 3; /* position */
+	width:15%;
+	padding: 1em;
+	margin: 0.em;
+	border-radius: 1em	
+}
 	
 
 
 /* On force la taille de la page... et on modèle de boite global */
-body, html {
+html {
 	background-color: black;
 	display: flex;
 	flex-direction: column;  /* disposition */
@@ -115,5 +129,4 @@ body, html {
 #content {
 	height: 80%
 }
-
 
