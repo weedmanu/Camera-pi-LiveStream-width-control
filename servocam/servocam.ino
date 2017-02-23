@@ -8,10 +8,9 @@ Servo myservoY; // déclare le servo pour l'axe y
 int posZ = 90;    // pour la position initial 90°
 int posY = 90;    // pour la position initial 90°
 int message = 0;  //  par défaut message vaut 0
-int posZ1;
-int posZ2;
-int posY3;
-int posY4;
+int posZZ;
+int posYY;
+
 
 void setup() {
   myservoZ.attach(2);  // servo z sur pin 2 
@@ -21,62 +20,62 @@ void setup() {
   Serial.begin(9600); 
 }
 
-void cam()
+void cam()  // fonction  
 {
   if (Serial.available())  {   // si on recoit quelque chose du port serie
     message = Serial.read()-'0';  // on soustrait le caractère 0, qui vaut 48 en ASCII
     
     switch (message) {  // si message vaut
-    case 1: 
-      posZ1 = posZ + 10;  
-      if (posZ1 > 180)
+    case 1:  //  si message vaut 1 on tourne à droite
+      posZZ = posZ + 10;  // on defini la nouvelle position (position actuelle augmentée de 10°)
+      if (posZZ > 180)    // pour ne jamais depassé les 180°
         {
-          posZ1 = 180;
+          posZZ = 180;
         }    
-      for(posZ=posZ; posZ <= posZ1; posZ += 1)      
+      for(posZ=posZ; posZ <= posZZ; posZ += 1) // boucle for, pour se déplacer à la nouvelle position pas trop vite et pas à pas.
          {                                  
            myservoZ.write(posZ);
            delay(100);
          }      
       break;
-    case 2:
-      posZ2 = posZ - 10;      
-      if (posZ2 < 0)
+    case 2:    //  si message vaut 2 on tourne à gauche
+      posZZ = posZ - 10;   // on defini la nouvelle position (position actuelle diminuée de 10°)   
+      if (posZZ < 0)   // pour ne jamais descendre en dessous de 0°
         {
-          posZ2 = 0;
+          posZZ = 0;
         }
-      for(posZ=posZ; posZ >= posZ2; posZ -= 1)      
+      for(posZ=posZ; posZ >= posZZ; posZ -= 1)    // boucle for, pour se déplacer à la nouvelle position pas trop vite et pas à pas.
          {                                  
            myservoZ.write(posZ);
            delay(100);
          }      
       break;
-    case 3:
-      posY3 = posY + 10;
-      if (posY3 > 180)
+    case 3:    //  si message vaut 3 on monte
+      posYY = posY + 10;  // on defini la nouvelle position (position actuelle augmentée de 10°)
+      if (posYY > 180)   // pour ne jamais depassé les 180°
         {
-          posY3 = 180;
+          posYY = 180;
         }  
-      for(posY=posY; posY <= posY3; posY += 1)      
+      for(posY=posY; posY <= posYY; posY += 1)      // boucle for, pour se déplacer à la nouvelle position pas trop vite et pas à pas.
          {                                  
            myservoY.write(posY);
            delay(100);
          }
       break;
-    case 4:
-      posY4 = posY - 10;
-      if (posY4 < 0)
+    case 4:   //  si message vaut 3 on descend
+      posYY = posY - 10;   // on defini la nouvelle position (position actuelle diminuée de 10°) 
+      if (posYY < 0)       // pour ne jamais descendre en dessous de 0°
         {
-          posY4 = 0;
+          posYY = 0;
         }
-      for(posY=posY; posY >= posY4; posY -= 1)      
+      for(posY=posY; posY >= posYY; posY -= 1)      // boucle for, pour se déplacer à la nouvelle position pas trop vite et pas à pas.
          {                                  
            myservoY.write(posY);
            delay(100);
          }
       break;
-    case 5:
-      if (posZ > 90)  {
+    case 5:   //  si message vaut 5 on se remet en position initiale en fonction de la ou on se trouve pas trop vite et pas à pas.
+      if (posZ > 90)  {   
         for(posZ=posZ; posZ >= 90; posZ -= 1)      
          {                                  
           myservoZ.write(posZ);
@@ -110,5 +109,5 @@ void cam()
 }
 
 void loop() {
-   cam();  
+   cam();  // appel de la fonction en boucle,
 }
