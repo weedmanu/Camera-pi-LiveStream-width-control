@@ -17,8 +17,9 @@ $srv_addr = "http://${_SERVER['SERVER_ADDR']}:8080";
 			fseek($monfichier, 0); // On remet le curseur au début du fichier
 			fputs($monfichier, $rep); // On écrit le nouveau nombre 			
 			sleep(1);		
-			$affiche = "<iframe class='cam' src='$srv_addr/cam.html' /></iframe>";	
-			$affiche2 = "<iframe class='cam' src='photo.php'></iframe>";						
+			$affiche = "<iframe class='cam' src='$srv_addr/cam.html' /></iframe>";				
+			$affiche2 = "<iframe class='cam' src='servo.php'></iframe>";	
+			$affiche3 = "<iframe class='cam' src='photo.php'></iframe>";					
 						
 			} else  { 	
 				
@@ -74,13 +75,13 @@ $srv_addr = "http://${_SERVER['SERVER_ADDR']}:8080";
     
     <nav>	
 
-		<iframe class="cam" src="servo.php"></iframe>
+		<?php echo $affiche2;?>
 			 
     </nav>   
     
     <aside>		
     
-		<?php echo $affiche2;?>		
+		<?php echo $affiche3;?>		
 		  
     </aside>
     

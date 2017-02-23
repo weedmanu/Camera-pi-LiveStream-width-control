@@ -8,6 +8,10 @@ Servo myservoY; // déclare le servo pour l'axe y
 int posZ = 90;    // pour la position initial 90°
 int posY = 90;    // pour la position initial 90°
 int message = 0;  //  par défaut message vaut 0
+int posZ1;
+int posZ2;
+int posY3;
+int posY4;
 
 void setup() {
   myservoZ.attach(2);  // servo z sur pin 2 
@@ -24,26 +28,82 @@ void cam()
     
     switch (message) {  // si message vaut
     case 1: 
-      posZ = posZ + 10;      
-      myservoZ.write(posZ);  // on monte de 10°
+      posZ1 = posZ + 10;  
+      if (posZ1 > 180)
+        {
+          posZ1 = 180;
+        }    
+      for(posZ=posZ; posZ <= posZ1; posZ += 1)      
+         {                                  
+           myservoZ.write(posZ);
+           delay(100);
+         }      
       break;
     case 2:
-      posZ = posZ - 10;
-      myservoZ.write(posZ); // on descend de 10°
+      posZ2 = posZ - 10;      
+      if (posZ2 < 0)
+        {
+          posZ2 = 0;
+        }
+      for(posZ=posZ; posZ >= posZ2; posZ -= 1)      
+         {                                  
+           myservoZ.write(posZ);
+           delay(100);
+         }      
       break;
     case 3:
-      posY = posY + 10;
-      myservoY.write(posY);  // on tourne à droite de 10°
+      posY3 = posY + 10;
+      if (posY3 > 180)
+        {
+          posY3 = 180;
+        }  
+      for(posY=posY; posY <= posY3; posY += 1)      
+         {                                  
+           myservoY.write(posY);
+           delay(100);
+         }
       break;
     case 4:
-      posY = posY - 10;
-      myservoY.write(posY);  // on tourne à gauche de 10°
+      posY4 = posY - 10;
+      if (posY4 < 0)
+        {
+          posY4 = 0;
+        }
+      for(posY=posY; posY >= posY4; posY -= 1)      
+         {                                  
+           myservoY.write(posY);
+           delay(100);
+         }
       break;
     case 5:
-      posY = 90; 
-      posZ = 90;
-      myservoY.write(posY);           // on se remet en position initial
-      myservoZ.write(posZ);
+      if (posZ > 90)  {
+        for(posZ=posZ; posZ >= 90; posZ -= 1)      
+         {                                  
+          myservoZ.write(posZ);
+          delay(100);
+         }           
+      }
+      if (posZ < 90)  {
+        for(posZ=posZ; posZ <= 90; posZ += 1)      
+         {                                  
+           myservoZ.write(posZ);
+           delay(100);
+         }           
+      }
+      if (posY > 90)  {
+        for(posY=posY; posY >= 90; posY -= 1)      
+         {                                  
+          myservoY.write(posY);
+          delay(100);
+         }           
+      }
+      if (posY < 90)  {
+        for(posY=posY; posY <= 90; posY += 1)      
+         {                                  
+           myservoY.write(posY);
+           delay(100);
+         }           
+      }
       break;
     }
   }
